@@ -1,0 +1,103 @@
+.menu{
+  position: fixed;
+  left: 0;
+  height: 100%;
+  width: 180px;
+  font-size: 1.4rem;
+  color: white;
+  text-decoration: none;
+  background-color:rgba(77,106,135,1);
+  overflow: hidden;
+  transition: all 0.3s ease-out;
+  z-index: 1031;
+  .logo{
+    height:  64px;
+    line-height: 64px;
+    text-align: center;
+    font-size: 2rem;
+    background: #374C60;
+    //h5{
+    //  padding-left: 10px;
+    //}
+  }
+  .sliding_box{
+    transition: all 0.2s ease-out;
+    position: absolute;
+    left: 0;
+    width: 5px;
+    background: #FFFFFF;
+  }
+  .menu-mainli{
+    cursor: pointer;
+    >a{
+      padding-left: 15px;
+      >span{
+        margin-left: 15px;
+      }
+    }
+  }
+  .menu-mainli-i-before{
+    margin-right: 20px;
+    float: right;
+    font-size: 1.4rem;
+    line-height: 40px;
+    transition: all 0.5s ease-out;
+  }
+  .menu-mainli-i-after{
+    transition: all 0.3s ease-out;
+    margin-right: 40px;
+    margin-top: 12px;
+    font-size: 1.4rem;
+  }
+  .menu-ul{
+    transition: all 0.5s ease-out;
+    >li{
+      cursor: pointer;
+      >a{
+        padding-left: 28px;
+        >span{
+          font-size: 13px;
+        }
+      }
+    }
+  }
+  ul{
+    padding: 0;
+    transition: all 0.5s ease-out;
+    overflow: hidden;
+    >li {
+      list-style: none;
+      line-height: 20px;
+      ul{
+        height: 0;
+        overflow: hidden;
+      }
+    }
+    li {
+      a{
+        height: 40px;
+        line-height: 40px;
+        display: block;
+      }
+      a:hover{
+        color: #EEF5FD;
+        cursor: pointer;
+      }
+    }
+  }
+  a{
+    color: white;
+    text-decoration: none;
+  }
+  a:hover{
+    text-decoration: none;
+  }
+  .pull-right{
+    margin-right: 5px;
+  }
+}
+
+
+
+
+

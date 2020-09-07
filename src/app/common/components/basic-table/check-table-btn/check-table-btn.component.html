@@ -1,0 +1,61 @@
+<div class="check-table-btn" *ngIf="option">
+  <!--没有按钮的-->
+  <div *ngIf="!option.btnHidden">
+    <p-table
+      [columns]="option.header"
+      [value]="option.Content"
+      selectionMode="multiple"  scrollHeight="50vh"
+      [style]="{'width': option?.width}"  [(selection)]="select"
+      (onRowSelect)="selectClick($event)" (onRowUnselect)="noSelectClick($event)"
+    >
+      <ng-template pTemplate="header" let-columns>
+        <tr style="height: 5vh">
+          <!--<th style="width: 3em">-->
+            <!--<p-tableHeaderCheckbox (click)="checkClick()"></p-tableHeaderCheckbox>-->
+          <!--</th>-->
+          <th *ngFor="let col of columns" >
+            {{col.header}}
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-columns="columns" let-rowIndex="rowIndex">
+        <!--普通列表-->
+        <tr [pSelectableRow]="rowData" >
+          <td  *ngFor="let col of columns">
+            <div *ngIf="col.field === 'videoUrl' || col.field === 'innerUrl' || col.field === 'outUrl'" style="overflow-x: scroll">{{rowData[col.field]}}</div>
+            <div *ngIf="col.field !== 'videoUrl' && col.field !== 'innerUrl' && col.field !== 'outUrl'" >{{rowData[col.field]}}</div>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  <!--有按钮的-->
+  <div *ngIf="option.btnHidden">
+    <p-table [columns]="option.header" [value]="option.Content"  [scrollable]="false"   scrollHeight="50vh"  [style]="{'width':  option?.width}"  [(selection)]="select"  (onRowSelect)="selectClick($event)"  (onRowUnselect)="noSelectClick($event)">
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <th style="width: 3em">
+            <p-tableHeaderCheckbox (click)="checkClick()"></p-tableHeaderCheckbox>
+          </th>
+          <th *ngFor="let col of columns">
+            {{col.header}}
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-columns="columns" let-rowIndex="rowIndex">
+        <!--普通列表-->
+        <tr [pSelectableRow]="rowData" >
+          <td style="width: 3em">
+            <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
+          </td>
+          <td  *ngFor="let col of columns.slice(0, columns.length-1)" >
+            {{rowData[col.field]}}
+          </td>
+          <td >
+            <button class="check-table-btn-detail" (click)="DetailClick(rowData)" *ngFor="let item of option.tableList" [ngStyle]="{'background': item.color}">{{item.label}}</button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>

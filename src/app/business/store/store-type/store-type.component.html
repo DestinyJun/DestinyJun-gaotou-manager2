@@ -1,0 +1,19 @@
+<div class="storeType">
+  <!--提示信息-->
+  <p-messages  [closable]="true" [style]="{'position':'fixed','top': '0','margin-left': '9vw','width': '80vw','z-index':'9999'}"></p-messages>
+  <!--确认弹窗-->
+  <p-confirmDialog acceptLabel="确认" rejectLabel="取消"></p-confirmDialog>
+  <rbi-s-loation locationTitle="店铺类型管理"></rbi-s-loation>
+  <div class="storeType-header">
+    <rbi-basic-btn [btnOption]="btnOption" (event)="btnEvent($event)"></rbi-basic-btn>
+  </div>
+  <div class="storeType-table">
+    <rbi-check-table-btn [select]="storeTypeSelect" (selectData)="selectData($event)" [option]="storeTypeTableOption"></rbi-check-table-btn>
+  </div>
+  <rbi-paging [option]="pageOption" (pageClick)="nowPageClick($event)"></rbi-paging>
+  <rbi-dialog-pop
+    [formContrl]="formgroup"
+    [formdata]="formdata"
+    (eventClick)="eventClick($event)"
+    [dialogOption]="dialogOption"></rbi-dialog-pop>
+</div>

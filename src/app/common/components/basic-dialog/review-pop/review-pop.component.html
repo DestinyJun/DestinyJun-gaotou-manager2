@@ -1,0 +1,25 @@
+<div class="review-pop">
+  <div class="review-pop" *ngIf="reviewOption">
+    <p-dialog header="审核" [(visible)]="reviewOption.dialog"  [width]="reviewOption.width" [closable]="false">
+      <!--Content-->
+        <div class="ui-g ui-fluid" [ngStyle]="{'line-height':'3vh'}">
+          <div class="ui-g-12">
+            <div class="ui-g-4">
+              <label >审核状态：</label>
+            </div>
+            <div class="ui-g-8">
+              <p-radioButton type="radio" label="通过"  value="通过" name="group"  [(ngModel)]="reviewStatus"></p-radioButton>
+              <p-radioButton type="radio" label="不通过"  value="不通过" name="group" [ngStyle]="{'margin-left':'3vw'}" [(ngModel)]="reviewStatus"></p-radioButton>
+            </div>
+          </div>
+        </div>
+      <p-footer>
+        <div class="ui-dialog-buttonpane ui-helper-clearfix" style="text-align: center">
+          <button  class="review-pop-btn review-pop-btn-sure" (click)="SureClick()">确认</button>
+          <button  class="review-pop-btn review-pop-btn-false" (click)="closeClick()">取消</button>
+        </div>
+      </p-footer>
+    </p-dialog>
+  </div>
+
+</div>

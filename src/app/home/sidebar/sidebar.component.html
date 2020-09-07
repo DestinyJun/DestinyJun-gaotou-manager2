@@ -1,0 +1,35 @@
+<div class="menu" >
+  <div class="logo">
+    <!--<img src="../../../assets/logo.jpg" alt="">-->
+<!--    <span *ngIf="logoShow">贵州高投集团</span>-->
+    <span >贵州高投集团</span>
+  </div>
+  <!--运动条-->
+  <div #slidingBox class="sliding_box" [ngStyle]="{height: slidinghight+'px',top:slidingTop+'px'}"></div>
+  <!--导航-->
+  <ul #mainul>
+    <li class="menu-mainli" #mainli *ngFor="let list of navLists;" [ngStyle]="{background:list.clsstate? '#7CB342': ''}">
+      <a
+        #mainli_a [ngStyle]="{color:list.clsstate? 'white': ''}"
+        (mouseenter)="mainLiMouseEnter(mainli_a)"
+        (click)="mainLiClick(mainul,menuul,list)"
+      >
+        <span>{{list.title}}</span>
+        <i [ngClass]="[list.icon,'menu-mainli-i-before']"></i>
+        <!--<i  class="menu-mainli-i-after pull-right" [ngClass]="{'fa': list.children.length, 'fa-angle-down': list.children.length}" [ngStyle]="{transform: list.open?'rotate(0deg)':'rotate(180deg)'}"></i>-->
+      </a>
+      <ul class="menu-ul" #menuul>
+        <li *ngFor="let listchild of list.children" #menuli [ngStyle]="{background:listchild.setState? '#7CB342': ''}">
+          <a
+            [routerLink]="[listchild.routers]"
+            #menuli_a [ngStyle]="{color:listchild.setState?'white': ''}"
+            (mouseenter)="menuliMouseEnter(menuli)"
+            (click)="menuliClick(listchild)">
+            <span style="margin-left: 18px">{{listchild.title}}</span>
+            <i [ngClass]="[listchild.icon,'menu-mainli-i-before']"></i>
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,96 @@
+<div class="dialog-pop" *ngIf="dialogOption">
+<!--  -->
+      <p-dialog [header]="dialogOption.title" [(visible)]="dialogOption.dialog"  [width]="dialogOption.width" [closable]="false">
+    <!--Content-->
+          <p-scrollPanel [style]="{width:'100%',height: '70vh'}" styleClass="custombar" >
+          <div class="ui-g ui-fluid" [ngStyle]="{'line-height':'3vh'}" *ngIf="dialogOption.type === 'add'">
+            <div class="ui-g-12">
+              <div class="form-group" [formGroup]="formContrl" *ngIf="formdata">
+                <div class="ui-g-6" *ngFor="let item of formdata?.formList">
+                  <div class="ui-g-4">
+                    <label [for]="item?.name">{{item.label}}:</label>
+                  </div>
+                  <div class="ui-g-8" *ngIf="item?.type === 'input'" style="line-height: 2vh">
+                    <div [hidden]="!item?.disable">
+                      <span *ngIf="formContrl.value[item?.name] !==''"><label style="color: #EDEDED">1</label>{{formContrl.value[item?.name]}}</span>
+                      <span *ngIf="formContrl.value[item?.name] ===''"><label style="color: #EDEDED">1</label>{{item?.placeholder}}</span>
+                      <input type="text" hidden pInputText [id]="item?.name" [formControlName]="item?.name"  [placeholder]="item?.placeholder" (click)="inputData()" (blur)="inputBlur(item?.name)"/>
+                    </div>
+                    <div [hidden]="item?.disable">
+                      <input type="text"  pInputText [id]="item?.name" [formControlName]="item?.name"  [placeholder]="item?.placeholder" (click)="inputData()" (blur)="inputBlur(item?.name)" />
+                    </div>
+                  </div>
+                  <div class="ui-g-8" *ngIf="item?.type === 'dropdown'"  style="line-height: 2vh">
+                    <p-dropdown [id]="item?.name" scrollHeight="100px" [options]="item?.option"  [placeholder]="item?.placeholder" [formControlName]="item?.name" (onChange)="dataChange(item?.name, item?.value, item?.option)"></p-dropdown>
+                  </div>
+                  <div class="ui-g-8" *ngIf="item?.type === 'date'"  style="line-height: 2vh">
+                    <p-calendar  [placeholder]="item?.placeholder" [monthNavigator]="true" [yearNavigator]="true" dateFormat="yy/mm/dd"  yearRange="1900:2050" [locale]="esDate"  [formControlName]="item?.name"></p-calendar>
+                  </div>
+                  <div class="ui-g-8" *ngIf="item?.type === 'radio'"  style="line-height: 3vh">
+                    <p-radioButton [label]="i?.label" [name]="i?.name" [value]="i?.value"  [formControlName]="item?.name" *ngFor="let i of item?.value"></p-radioButton>
+                  </div>
+                  <div class="ui-g-8" *ngIf="item?.type === 'textbox'"  style="line-height: 2vh">
+                    <textarea [rows]="item?.value?.row" [cols]="item?.value?.col" pInputTextarea [formControlName]="item?.name" [placeholder]="item?.placeholder"></textarea>
+                  </div>
+                  <div class="ui-g-8" *ngIf="item?.type === 'checkbox'"  style="line-height: 2vh">
+                    <p-checkbox [label]="i?.label" [name]="i?.name" [value]="i?.value" [formControl]="formContrl.controls[item?.name]" *ngFor="let i of item?.value"></p-checkbox>
+                  </div>
+                  <div class="ui-g-8" *ngIf="item?.type === 'tree'"  style="line-height: 2vh">
+                    <input type="text" pInputText [id]="item?.name" [formControlName]="item?.name"  [placeholder]="item?.placeholder" (click)="dataTreeClick()" />
+                  </div>
+                </div>
+                <div *ngFor="let item of formdata?.dataList; let index = index">
+                    <div class="ui-g-12" style="border-bottom: 2px dotted black" >
+                      <h4 class="text-center">{{item.title}}</h4>
+                    </div>
+                    <div class="ui-g-6" *ngFor="let i of item.data;let flag = index">
+                      <div class="ui-g-3">
+                        <label [for]="i?.name">{{i.label}}:</label>
+                      </div>
+                      <div class="ui-g-6" *ngIf="i?.type === 'input'" style="line-height: 2vh">
+                          <input type="text"  pInputText [id]="i?.name" [formControlName]="i?.name"  [placeholder]="i?.placeholder" (click)="inputData()" (blur)="inputBlur(i?.name)" />
+                      </div>
+                      <div class="ui-g-3" *ngIf="i.status === 1">
+                        <button pButton type="button" label="删除" (click)="deleteBtnClick(dialogOption.title, item.title, i, flag)" class="ui-button-danger"></button>
+                      </div>
+                    </div>
+                    <div *ngFor="let drap of item.drop;">
+                      <div class="ui-g-6 text-center" *ngIf="drap?.type === 'dropdown'">
+                        <div class="ui-g-4">
+                          <p-dropdown [id]="drap?.name" scrollHeight="100px" [options]="drap?.option"  [placeholder]="drap?.placeholder" [formControlName]="drap?.name" (onChange)="dropDownChangeData(drap?.name, index, drap?.option)"></p-dropdown>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p-footer >
+            <div class="ui-dialog-buttonpane ui-helper-clearfix" style="text-align: center">
+              <button  class="dialog-pop-btn dialog-pop-btn-sure" (click)="SureClick()">确认</button>
+              <button  class="dialog-pop-btn dialog-pop-btn-false" (click)="CloseClick()">取消</button>
+            </div>
+          </p-footer>
+       </p-scrollPanel>
+      </p-dialog>
+  <p-dialog [(visible)]="treeDialog" [responsive]="true" showEffect="fade" [maximizable]="true" [baseZIndex]="10000" [modal]="true" [width]="350" [height]="400">
+    <div class="ui-g ui-fluid">
+      <div class="ui-g-12">
+        <p-scrollPanel [style]="{width: '100%', height: '300px'}">
+          <p-tree
+            [value]="dataTrees"
+            [(selection)]="dataTree"
+            selectionMode="single"
+            (onNodeSelect)="treeOnNodeSelect($event)">
+          </p-tree>
+        </p-scrollPanel>
+      </div>
+    </div>
+    <p-footer>
+      <div class="ui-dialog-buttonpane ui-helper-clearfix" style="text-align: center">
+        <button  class="dialog-pop-btn dialog-pop-btn-sure" style="width: 4vw" (click)="dataTreeSureClick()">确认</button>
+        <button  class="dialog-pop-btn dialog-pop-btn-false" style="width: 4vw" (click)="treeDialog = false">取消</button>
+      </div>
+    </p-footer>
+  </p-dialog>
+</div>

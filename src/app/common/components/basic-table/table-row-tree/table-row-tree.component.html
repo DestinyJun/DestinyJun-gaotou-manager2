@@ -1,0 +1,72 @@
+<div class="table-row-tree">
+  <p-table [columns]="treeTableOption.header" [value]="treeTableOption.Content" [dataKey]="treeTableOption.header[0].field"  *ngIf="treeTableOption" selectionMode="multiple" [(selection)]="select" (onRowExpand)="selectClick($event)">
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th style="width: 3em">
+<!--          <p-tableHeaderCheckbox ></p-tableHeaderCheckbox>-->
+        </th>
+        <th style="width: 3em"></th>
+        <th *ngFor="let col of columns">
+          {{col.header}}
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-expanded="expanded" let-columns="columns" let-Index>
+      <tr>
+        <td style="width: 3em">
+          <p-tableCheckbox [value]="rowData" (click)="selectClick(rowData)"></p-tableCheckbox>
+        </td>
+        <td>
+          <a href="#" [pRowToggler]="rowData">
+            <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
+          </a>
+        </td>
+        <td *ngFor="let col of columns">
+          {{rowData[col.field]}}
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="rowexpansion" let-rowData let-columns="columns">
+      <div style="width: 65.4vw;margin-left: 4vw;margin-bottom: 2vh">
+        <rbi-table-tree [treeTableOption]="{header: treeTableOption.children.header,Content: rowData.content}"></rbi-table-tree>
+
+<!--        <p-treeTable [value]="rowData.content"  [columns]="treeTableOption.children.header">-->
+<!--          <ng-template pTemplate="header" let-columns1>-->
+<!--            <tr style="height: 5vh;">-->
+<!--              <th *ngFor="let col of columns1">-->
+<!--                {{col.header}}-->
+<!--              </th>-->
+<!--            </tr>-->
+<!--          </ng-template>-->
+<!--          <ng-template pTemplate="body" let-rowNode let-rowData1 let-columns1="columns1">-->
+<!--            <tr [ttSelectableRow]="rowNode">-->
+<!--              <td *ngFor="let col of columns1; let i = index">-->
+<!--                <p-treeTableToggler [rowNode]="rowNode" *ngIf="i == 0"></p-treeTableToggler>-->
+<!--                {{rowData1[col.field]}}-->
+<!--              </td>-->
+<!--            </tr>-->
+<!--          </ng-template>-->
+<!--        </p-treeTable>-->
+
+
+<!--        <p-treeTable [value]="rowData.content"  [columns]="treeTableOption.children.header">-->
+<!--          <ng-template pTemplate="header" let-columns>-->
+<!--            <tr style="height: 3vh;">-->
+<!--              <th *ngFor="let col of columns">-->
+<!--                {{col.header}}-->
+<!--              </th>-->
+<!--            </tr>-->
+<!--          </ng-template>-->
+<!--          <ng-template pTemplate="body" let-rowNode let-rowData1="rowData1" let-columns1="columns1">-->
+<!--            <tr [ttSelectableRow]="rowNode">-->
+<!--              <td *ngFor="let col of columns1; let i = index">-->
+<!--                <p-treeTableToggler [rowNode]="rowNode" *ngIf="i == 0"></p-treeTableToggler>-->
+<!--                {{rowData1[col.field]}}-->
+<!--              </td>-->
+<!--            </tr>-->
+<!--          </ng-template>-->
+<!--        </p-treeTable>-->
+      </div>
+    </ng-template>
+  </p-table>
+</div>

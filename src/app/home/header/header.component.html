@@ -1,0 +1,74 @@
+<nav class="navbar navbar-default navbar-fixed-top" (click)="eventClick($event)">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <div class="title">
+        <img class="rounded-circle" src="assets/images/Nasta.png" alt="">
+        <span class="user-admin" style="margin-left: 1vw">admin</span>
+      </div>
+      <div class="user pull-right">
+        <ul class="user-ul">
+          <li>
+            <i class="fa fa-search search-i" aria-hidden="true"></i>
+            <input type="text" placeholder="Search">
+          </li>
+          <li class="li" style="position: relative;" >
+            <span class="markone">4</span>
+            <i class="fa fa-bell font" aria-hidden="true" id="remind"></i>
+          </li>
+          <li class="li" style="position: relative;">
+            <span class="marktwo">5</span>
+            <i class="fa fa-envelope font" aria-hidden="true" id="message"></i>
+          </li>
+          <li class="li">
+            <i class="fa fa-cog font" aria-hidden="true"></i>
+          </li>
+        </ul>
+        <div class="boxone" [hidden]="remindShow">
+          <ul>
+            <li>
+              <i class="fa fa-bug" aria-hidden="true"></i>
+              <span>Pending tasks</span>
+            </li>
+            <li>
+              <i class="fa fa-calendar-o" aria-hidden="true"></i>
+              <span>Meeting today at 3pm</span>
+            </li>
+            <li>
+              <i class="fa fa-cloud-download" aria-hidden="true"></i>
+              <span>Download documents</span>
+            </li>
+            <li>
+              <i class="fa fa-fighter-jet" aria-hidden="true"></i>
+              <span>Book flight</span>
+            </li>
+          </ul>
+        </div>
+        <div class="boxtwo" [hidden]="messageShow">
+          <ul>
+            <li>
+              <img class="rounded-circle" src="assets/images/Nasta.png" alt="">
+              <span>call me back</span>
+            </li>
+            <li>
+              <img class="rounded-circle" src="assets/images/Nasta.png" alt="">
+              <span>Meeting today at 3pm</span>
+            </li>
+            <li>
+              <img class="rounded-circle" src="assets/images/Nasta.png" alt="">
+              <span>Download documents</span>
+            </li>
+            <li>
+              <img class="rounded-circle" src="assets/images/Nasta.png" alt="">
+              <span>Book flight</span>
+            </li>
+            <li>
+              <img class="rounded-circle" src="assets/images/Nasta.png" alt="">
+              <span>Book flight</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+

@@ -1,0 +1,17 @@
+<div class="file-pop" *ngIf="UploadFileOption">
+  <p-dialog header="文件上传" [(visible)]="UploadFileOption.dialog" [width]="UploadFileOption.width">
+    <!--Content-->
+    <div class="ui-g ui-fluid" >
+      <div class="ui-g-12">
+        <p-fileUpload multiple="multiple"  maxFileSize="10000000000"  [files]="UploadFileOption.files" chooseLabel="选择文件">
+        </p-fileUpload>
+      </div>
+    </div>
+    <p-footer>
+      <div class="ui-dialog-buttonpane ui-helper-clearfix" style="text-align: center">
+        <button class="file-pop-btn file-pop-btn-sure" (click)="UploadSureClick()">确认</button>
+        <button class="file-pop-btn file-pop-btn-false"  (click)="UploadFileOption.dialog=false">取消</button>
+      </div>
+    </p-footer>
+  </p-dialog>
+</div>

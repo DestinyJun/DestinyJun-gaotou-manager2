@@ -1,0 +1,21 @@
+<div class="role">
+  <!--提示信息-->
+  <p-messages  [closable]="true" [style]="{'position':'fixed','top': '0','margin-left': '9vw','width': '80vw','z-index':'9999'}"></p-messages>
+  <!--确认弹窗-->
+  <p-confirmDialog acceptLabel="确认" rejectLabel="取消"></p-confirmDialog>
+  <rbi-s-loation locationTitle="角色管理"></rbi-s-loation>
+  <div class="role-header">
+    <rbi-basic-btn [btnOption]="btnOption" (event)="btnEvent($event)" [drapData]="drapData" (changeData)="getDrapData($event)"></rbi-basic-btn>
+  </div>
+  <div class="role-table">
+<!--    <rbi-tree-table [select]="roleSelect" (selectData)="selectData($event)" [treeTableOption]="roleTableOption"></rbi-tree-table>-->
+    <rbi-table-row-tree [select]="roleSelect" (selectData)="selectData($event)" [treeTableOption]="roleTableOption"></rbi-table-row-tree>
+  </div>
+  <rbi-paging [option]="pageOption" (pageClick)="nowPageClick($event)"></rbi-paging>
+  <rbi-dialog-pop
+    [formContrl]="formgroup"
+    [formdata]="formdata"
+    (eventClick)="eventClick($event)"
+    [dialogOption]="dialogOption"
+    [treeData]="roleTree" [checkTree]="roleTreeCheck"></rbi-dialog-pop>
+</div>

@@ -1,0 +1,32 @@
+.check-table-btn {
+  overflow: hidden;
+  width: 100%;
+  ::ng-deep .ui-table .ui-table-thead>tr >th{
+    border: 0;
+    //padding-left: 0;
+
+  }
+  ::ng-deep .ui-table .ui-table-tbody>tr >td{
+    border: 0;
+    //padding: 1em 0.9em
+    //padding-left: 0;
+  }
+  .check-table-btn-detail {
+      width: 6vw;
+      text-align: center;
+      border-radius: 5px;
+      height: 3.5vh;
+      outline: none;
+      color: #fff;
+      border: 0;
+      background: #6A72A1;
+      //text-align: center;
+      cursor:pointer;
+    }
+    .check-table-btn-detail:hover{
+      background: #50588E;
+    }
+  ::ng-deep body .ui-table .ui-table-tbody > tr:nth-child(even){
+    background-color: #f9f9f9
+  }
+}

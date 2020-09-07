@@ -1,0 +1,23 @@
+<div class="srearea">
+  <!--提示信息-->
+  <p-messages  [closable]="true" [style]="{'position':'fixed','top': '0','margin-left': '9vw','width': '80vw','z-index':'9999'}"></p-messages>
+  <!--确认弹窗-->
+  <p-confirmDialog acceptLabel="确认" rejectLabel="取消"></p-confirmDialog>
+  <rbi-s-loation locationTitle="服务区管理"></rbi-s-loation>
+  <!--<h1 class="text-center">服务区管理</h1>-->
+  <div class="serarea-header">
+    <rbi-basic-btn [btnOption]="btnOption" (event)="btnEvent($event)"></rbi-basic-btn>
+  </div>
+  <div class="serarea-table">
+    <rbi-check-table-btn [select]="serareaSelect" (selectData)="selectData($event)" [option]="serareaTableOption"></rbi-check-table-btn>
+  </div>
+  <rbi-service-pop
+    [dialogOption]="dialogOption"
+    [formdata]="formdata"
+    [formContrl]="formgroup"
+    [treeData]="companyTree"
+    (eventClick)="eventClick($event)"
+    (delBtnClick)="delBtnClick($event)"
+   (ChangeDataClick) = 'chageData($event)'></rbi-service-pop>
+  <rbi-paging [option]="serareaPageOption" (pageClick)="nowPageClick($event)"></rbi-paging>
+</div>

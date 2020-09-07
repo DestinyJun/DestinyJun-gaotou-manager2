@@ -1,0 +1,42 @@
+<div class="login">
+  <div class="login-box">
+    <div class="text-center">
+      <h2>贵州高投交通大数据管理系统</h2>
+    </div>
+    <div class="form">
+      <form class="form-horizontal"  [formGroup]="myFromModule" (submit)="onSubmit()">
+        <!--账号-->
+        <div class="form-group ">
+          <label for="userName" class="control-label">账号</label>
+          <input type="text" formControlName="userName" class="form-control" id="userName" placeholder="请输入账号" name="userN" autocomplete="off">
+          <div *ngIf="formUsername.invalid && (formUsername.dirty || formUsername.touched)" class="text-danger ">
+            <div *ngIf="formUsername.errors.required">
+              账号是必填项
+            </div>
+          </div>
+        </div>
+        <!--密码-->
+        <div class="form-group">
+          <label for="password" class="control-label">密码</label>
+          <input type="password" formControlName="password" class="form-control" id="password" placeholder="请输入密码"  name="passW" autocomplete="off">
+          <div *ngIf="formPassword.invalid && (formPassword.dirty || formPassword.touched)" class="text-danger ">
+            <div *ngIf="formPassword.errors.required">
+              密码是必填项
+            </div>
+          </div>
+        </div>
+        <!--登陆-->
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary" id="login">
+            登<span>录</span>
+          </button>
+          <a class="pull-right">忘记密码?</a>
+        </div>
+      </form>
+    </div>
+    <footer class="text-center">
+      <h5>贵阳红鸟智能技术服务有限公司</h5>
+    </footer>
+  </div>
+</div>
+<p-messages  [closable]="true" [style]="{'position':'fixed','left': '0', 'top': '0','margin-top': '0','width': '100vw','z-index':'9999'}"></p-messages>

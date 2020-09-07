@@ -1,0 +1,150 @@
+.navbar{
+  border-radius: 0;
+  background-color: rgb(96,125,139);
+  box-shadow: 2px 0 3px rgba(0,0,0,.7);
+  height: 64px;
+  color: white;
+  border: none;
+  margin-left: 180px;
+  padding-left: 15px;
+  .navbar-header{
+    float: none;
+    .title{
+      display: inline-block;
+      width: 200px;
+      line-height: 64px;
+      color: #E8EAF6;
+      margin-left: 5vw;
+      .fa-navicon{
+        cursor:pointer;
+        font-size: 24px;
+        font-weight: bold;
+        line-height: 64px;
+      }
+      >img{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: #000;
+        overflow: hidden;
+        cursor: pointer;
+      }
+    }
+    .user{
+      position: relative;
+      height: 64px;
+      line-height: 64px;
+      ul{
+        li {
+          margin-left: 10px;
+        }
+        .li {
+          position: relative;
+        }
+      }
+      .user-ul {
+        >li {
+          input {
+            background: rgba(0,0,0,0);
+            color: #646464;
+            font-size: 14px;
+            height: 30px;
+            width: 140px;
+            border: none;
+            border-bottom: 1px solid white;
+          }
+        }
+        .fa-search {
+          font-size: 18px;
+        }
+        li{
+          list-style: none;
+          display: inline-block;
+          height: 64px;
+          line-height: 64px;
+          font-size: 24px;
+          margin-right: 15px;
+        }
+        .li {
+          .markone {
+            width: 16px;
+            height: 16px;
+            line-height: 16px;
+            text-align: center;
+            font-size: 16px;
+            border-radius: 16px;
+            display: inline-block;
+            position: absolute;
+            left: 15px;
+            top: 10px;
+            background: #7CB342;
+          }
+          .marktwo {
+            width: 16px;
+            height: 16px;
+            line-height: 16px;
+            text-align: center;
+            font-size: 16px;
+            border-radius: 16px;
+            display: inline-block;
+            position: absolute;
+            left: 15px;
+            top: 10px;
+            background: #7CB342;
+          }
+        }
+      }
+      .boxone {
+        position: absolute;
+        background: white;
+        left: 18px;
+        width: 250px;
+        height: 180px;
+        padding-top: 15px;
+        color: #646464;
+        line-height: 38px;
+        box-shadow: 0 10px 15px #A2A2A2;
+        ul {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          li {
+            i {
+              margin-right: 10px;
+            }
+          }
+        }
+      }
+      .boxtwo {
+        position: absolute;
+        background: white;
+        left: 74px;
+        width: 250px;
+        padding-top: 15px;
+        color: #646464;
+        line-height: 38px;
+        box-shadow: 0 10px 15px #A2A2A2;
+        ul {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        }
+        img {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          margin-bottom: 10px;
+        }
+
+      }
+    }
+  }
+  /*公共样式*/
+  input::placeholder{
+    color: white;
+  }
+  /*bootstrap改造*/
+  .container-fluid{
+    padding-left: 0;
+  }
+}

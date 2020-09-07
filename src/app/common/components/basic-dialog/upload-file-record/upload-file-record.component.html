@@ -1,0 +1,34 @@
+<div class="upload-file-record">
+    <div class="upload-file-record" *ngIf="uploadRecordOption">
+      <p-dialog [header]="uploadRecordOption.title" [(visible)]="uploadRecordOption.dialog"  [width]="uploadRecordOption.width" [closable]="false">
+        <!--Content-->
+        <div class="ui-g ui-fluid" [ngStyle]="{'line-height':'4vh'}">
+          <div class="ui-g-6" style="text-align: center; font-size: 1rem; font-weight: bold">
+            <div class="ui-g-4">
+              <label >导入总条数:</label>
+            </div>
+            <div class="ui-g-8">
+              <label >{{uploadRecordOption.totalNumber}}</label>
+            </div>
+          </div>
+          <div class="ui-g-6" style="text-align: center; font-size: 1rem; font-weight: bold">
+            <div class="ui-g-4">
+              <label >导入成功条数:</label>
+            </div>
+            <div class="ui-g-8">
+              <label >{{uploadRecordOption.realNumber}}</label>
+            </div>
+          </div>
+          <div class="ui-g-12">
+            <rbi-bf-table [option]="uploadRecordOption.uploadOption"></rbi-bf-table>
+          </div>
+        </div>
+        <p-footer>
+          <div class="ui-dialog-buttonpane ui-helper-clearfix" style="text-align: center">
+            <button  class="upload-file-record-btn upload-file-record-btn-sure" (click)="uploadRecordOption.dialog = false">确认</button>
+            <button  class="upload-file-record-btn upload-file-record-btn-false" (click)="uploadRecordOption.dialog = false">取消</button>
+          </div>
+        </p-footer>
+      </p-dialog>
+    </div>
+</div>

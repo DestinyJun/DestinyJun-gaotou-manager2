@@ -1,0 +1,20 @@
+<div class="serarea-field-type">
+  <!--提示信息-->
+  <p-messages  [closable]="true" [style]="{'position':'fixed','top': '0','margin-left': '9vw','width': '80vw','z-index':'9999'}"></p-messages>
+  <!--确认弹窗-->
+  <p-confirmDialog acceptLabel="确认" rejectLabel="取消"></p-confirmDialog>
+  <rbi-s-loation locationTitle="服务区字段类型管理"></rbi-s-loation>
+  <!--<h1 class="text-center">服务管理</h1>-->
+  <div class="serarea-field-type-header">
+    <rbi-basic-btn [btnOption]="btnOption" (event)="btnEvent($event)"></rbi-basic-btn>
+  </div>
+  <div class="serarea-field-type-table">
+    <rbi-check-table-btn [select]="serareaFieldTypeSelect" (selectData)="selectData($event)" [option]="serareaFieldTypeTableOption"></rbi-check-table-btn>
+  </div>
+  <rbi-dialog-pop
+    [dialogOption]="dialogOption"
+    [formdata]="formdata"
+    [formContrl]="formgroup"
+    (eventClick)="eventClick($event)"></rbi-dialog-pop>
+  <rbi-paging [option]="serareaFieldTypePageOption" (pageClick)="pageClick($event)"></rbi-paging>
+</div>

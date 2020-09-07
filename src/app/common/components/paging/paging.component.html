@@ -1,0 +1,15 @@
+<div class="paging text-center" *ngIf="showPaging">
+  <ul class="pagination">
+    <li (click)="firstClick()"><a class="btn btn-info">首页</a></li>
+    <li (click)="pClick()"><a class="btn btn-info">上一页</a></li>
+    <li><a>第{{nowPage}}页/共{{totalPage}}页</a></li>
+    <li *ngIf="true">
+      <a style="padding: 3px 0 3px 10px;">
+        <input type="number" [(ngModel)]="skpPage" (blur)="appointPage($event)" (click)="din($event)">
+        <span style="padding: 3px 10px 3px 10px;" (click)="appointPage($event)">跳转</span>
+      </a>
+    </li>
+    <li (click)="nClick()"><a class="btn btn-warning">下一页</a></li>
+    <li (click)="lastClick()"><a class="btn btn-info">尾页</a></li>
+  </ul>
+</div>
